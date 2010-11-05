@@ -4,13 +4,6 @@ The main idea of this plugin is to keep all field translations on the
 same table. I've worked with other Rails plugins but all of them have 
 some caveats, and I needed something really simple.
 
-With the release of Rails 2.2.X, with the I18n integrated now it's 
-easier to translate an Rails application, GetText is no longer needed. 
-So I've added a few tasks which allow to extract translatable text 
-from the models, views and controllers.
-
-    $ rake -T i18n
-
 ## Quick explanation
 
 We have a page model with the following attributes.
