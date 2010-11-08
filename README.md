@@ -38,7 +38,9 @@ We can change the locale with `I18n.locale`.
 
 And we'll get the `title` attribute of the defined locale.
 
-## Migration
+## Example
+
+Migration:
 
     class CreatePages < ActiveRecord::Migration
 
@@ -46,6 +48,8 @@ And we'll get the `title` attribute of the defined locale.
         create_table :pages do |t|
           t.string :title_en, :null => false
           t.string :title_es
+          t.text :body_en, :null => false
+          t.text :body_es
         end
       end
 
@@ -55,9 +59,8 @@ And we'll get the `title` attribute of the defined locale.
 
     end
 
-## Model definition
+Model definition for `Page`:
 
-    # app/models/page.rb
     class Page < ActiveRecord::Base
       translate :title, :body
     end
