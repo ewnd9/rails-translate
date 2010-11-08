@@ -45,7 +45,7 @@ Sample migration
 
 Model definition
 
-    # app/models/page.rg
+    # app/models/page.rb
     class Page < ActiveRecord::Base
       translate :title, :body
     end
