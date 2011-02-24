@@ -1,5 +1,6 @@
-require 'test/unit'
 require 'rubygems'
+gem 'minitest' # ensures you're using the gem, and not the built in MT
+require 'minitest/autorun'
 require 'active_record'
 
 $LOAD_PATH << File.expand_path("#{File.dirname(__FILE__)}/../lib")
@@ -27,7 +28,7 @@ class Page < ActiveRecord::Base
   translate :name, 'body'
 end
 
-class TranslateTest < Test::Unit::TestCase
+class TranslateTest < MiniTest::Unit::TestCase
 
   def setup
 
@@ -112,7 +113,7 @@ class TranslateTest < Test::Unit::TestCase
   end
 
   def test_wrong_method_should_raise_nomethod_error
-    assert_raise NoMethodError do
+    assert_raises NoMethodError do
       Page.wadus_wadus
     end
   end
