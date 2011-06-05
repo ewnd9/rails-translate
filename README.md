@@ -1,4 +1,4 @@
-# Translate
+# Rails Translate
 
 The main idea of this plugin is to keep all field translations on the same
 table. I've worked with other Rails plugins but all of them have some caveats,
@@ -8,7 +8,8 @@ and I needed something really simple.
 
 Add it to your `Gemfile`:
 
-    gem 'translate', :git => 'https://github.com/fesplugas/rails-translate.git'
+    gem 'rails-translate'
+    gem 'rails-translate', :git => 'https://github.com/fesplugas/rails-translate.git'
 
 ## Usage
 
@@ -65,4 +66,4 @@ Model definition for `Page`:
       translate :title, :body
     end
 
-Copyright (c) 2008-2010 Francesc Esplugas Marti, released under the MIT license
+Copyright (c) 2008-2011 Francesc Esplugas Marti, released under the MIT license

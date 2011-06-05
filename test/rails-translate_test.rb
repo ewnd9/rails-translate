@@ -4,7 +4,7 @@ require 'minitest/autorun'
 require 'active_record'
 
 $LOAD_PATH << File.expand_path("#{File.dirname(__FILE__)}/../lib")
-require 'translate'
+require 'rails-translate'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
 
@@ -28,7 +28,7 @@ class Page < ActiveRecord::Base
   translate :name, 'body'
 end
 
-class TranslateTest < MiniTest::Unit::TestCase
+class RailsTranslateTest < MiniTest::Unit::TestCase
 
   def setup
 
