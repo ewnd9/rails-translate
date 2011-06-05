@@ -9,7 +9,7 @@ and I needed something really simple.
 Add it to your `Gemfile`:
 
     gem 'rails-translate'
-    gem 'rails-translate', :git => 'https://github.com/fesplugas/rails-translate.git'
+    # gem 'rails-translate', :git => 'https://github.com/fesplugas/rails-translate.git'
 
 ## Usage
 
