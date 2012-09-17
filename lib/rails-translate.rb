@@ -5,6 +5,15 @@ module Rails
       base.extend(ActsMethods)
     end
 
+    def self.translated_attribute_name(attribute, locale)
+      db_friendly_locale = locale.to_s.gsub('-', '_').downcase
+      "#{attribute}_#{db_friendly_locale}"
+    end
+
+    def translated_attribute_name(attribute, locale)
+      Rails::Translate.translated_attribute_name(attribute, locale)
+    end
+
     module ActsMethods
 
       def translate(*args)
@@ -12,8 +21,8 @@ module Rails
         args.each do |arg|
 
           define_method(arg.to_s) do
-            attribute = "#{arg}_#{I18n.locale}"
-            default_attribute = "#{arg}_#{I18n.default_locale}"
+            attribute = translated_attribute_name(arg, I18n.locale)
+            default_attribute = translated_attribute_name(arg, I18n.default_locale)
             begin
               return send(attribute).empty? ? send(default_attribute) : send(attribute)
             rescue
@@ -22,7 +31,7 @@ module Rails
           end
 
           define_method(arg.to_s + '=') do |data|
-            attribute = "#{arg}_#{I18n.locale}"
+            attribute = translated_attribute_name(arg, I18n.locale)
             write_attribute attribute, data if self.respond_to? attribute
           end
 
@@ -40,7 +49,7 @@ module Rails
               super
             else
               modifier = $1
-              attribute = "#{$2}_#{I18n.locale.to_s}"
+              attribute = Rails::Translate.translated_attribute_name($2, I18n.locale.to_s)
               send("find_#{modifier}_#{attribute}".to_sym, *args)
             end
           else
