@@ -43,19 +43,19 @@ module Rails
 
       module ClassMethods
 
-        def method_missing(method, *args)
-          if method.to_s =~ /^find_(all_by|by)_([_a-zA-Z]\w*)$/
-            if column_methods_hash.include?($2.to_sym)
-              super
-            else
-              modifier = $1
-              attribute = Rails::Translate.translated_attribute_name($2, I18n.locale.to_s)
-              send("find_#{modifier}_#{attribute}".to_sym, *args)
-            end
-          else
-            super
-          end
-        end
+        # def method_missing(method, *args)
+        #   if method.to_s =~ /^find_(all_by|by)_([_a-zA-Z]\w*)$/
+        #     if column_methods_hash.include?($2.to_sym)
+        #       super
+        #     else
+        #       modifier = $1
+        #       attribute = Rails::Translate.translated_attribute_name($2, I18n.locale.to_s)
+        #       send("find_#{modifier}_#{attribute}".to_sym, *args)
+        #     end
+        #   else
+        #     super
+        #   end
+        # end
 
       end
 
